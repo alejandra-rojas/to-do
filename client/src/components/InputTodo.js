@@ -9,7 +9,7 @@ function InputTodo({ getData }) {
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
-    //send request
+    //POST request
     try {
       const body = { title, user_email };
       const response = await fetch("http://localhost:5000/todos", {
@@ -22,7 +22,6 @@ function InputTodo({ getData }) {
         console.log("todo added");
         getData();
       }
-      // window.location = "/";
     } catch (err) {
       console.log(err.message);
     }

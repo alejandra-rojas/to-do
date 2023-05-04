@@ -1,16 +1,6 @@
-CREATE DATABASE todoappbrief;
-CREATE TABLE todo(
-    todo_id SERIAL PRIMARY KEY,
-    description VARCHAR(255)
-);
-
-
 -- \ls
 -- \dt
--- SELECT * FROM todos;
--- INSERT INTO todo(description) VALUES ('hello')
 -- \password
-
 
 -- define the table and the columns for the to dos
 CREATE TABLE todos (
@@ -25,6 +15,20 @@ CREATE TABLE users (
     hashed_password VARCHAR(255)
 );
 
+
+SELECT * FROM todos;
+SELECT * FROM todos WHERE user_email = $1
+SELECT * FROM todos WHERE todo_id = $1
+
+INSERT INTO todos (id, user_email, title) VALUES($1, $2, $3) RETURNING *
+UPDATE todos SET title = $1 WHERE id = $2;
+DELETE FROM todos WHERE id = $1
+
+
+
+
+
 --INSERT INTO todos(id, user_email, title) VALUES ('0', 'ale@test.com', 'First todo');
 
 -- 'UPDATE todos SET user_email = $1, title = $2 WHERE id = $3;', [user_email, title, id]
+
